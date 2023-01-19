@@ -1,13 +1,12 @@
 #1
-i = 0
 for i in range(5):
-    print(i, ' 0000000000')
+    print(i+1, ' 0000000000')
     i+=1
 
 #2
 c=0
 for i in range(10):
-    s=int(input())
+    s=int(input('Enter 10 the numbers: '))
     if s == 5:
         c+=1
 print(c)
@@ -20,7 +19,7 @@ print(sum)
 
 #4
 prod = 1
-for i in range(1,10):
+for i in range(1,11):
     prod = prod*i
 print(prod)
 
@@ -32,7 +31,7 @@ while integer_number>0:
      integer_number = integer_number//10
 
 #6
-integer_number = 2129
+integer_number = int(input('Enter the number: '))
 suma = 0
 while integer_number > 0:
     suma = suma + integer_number % 10
@@ -40,7 +39,7 @@ while integer_number > 0:
 print('Suma =', suma)
 
 #7
-integer_number = 2129
+integer_number = int(input('Enter the number: '))
 prod = 1
 while integer_number > 0:
     prod *= integer_number % 10
@@ -48,7 +47,7 @@ while integer_number > 0:
 print('Prod =', prod)
 
 #8
-integer_number = 213413
+integer_number = int(input('Enter the number: '))
 while integer_number>0:
     if integer_number%10 == 5:
         print('Yes')
