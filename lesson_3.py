@@ -16,15 +16,24 @@ for p in string.punctuation:
 lst = s.split()
 lst = repr(lst).decode("unicode_escape")
 lst = lst.lower()
+#print(s)
+#for i in lst:
+#lst = list(map(lambda x:x.lower(), lst))
+#print(lst)
 wordfreg = {}
 
 # 4
 for word in lst.replace(',', ' ').split():
     wordfreg[word] = wordfreg.setdefault(word, 0) + 1
-    #if word not in wordfreg:
-    #    wordfreg[word] = 0
-    #wordfreg[word] += 1
+    if word not in wordfreg:
+        wordfreg[word] = 0
+    wordfreg[word] += 1
 
-print(wordfreg)
+# 5
+print(sorted(wordfreg.values(), reverse=True)[0:5])
+print(len(set(wordfreg)))
+#list= []
+#for i in range(wordfreg)
+
 
 file.close
