@@ -14,8 +14,10 @@ for p in string.punctuation:
 
 # 2, 3
 lst = s.split()
+
 lst = repr(lst).decode("unicode_escape")
 lst = lst.lower()
+print(lst)
 #print(s)
 #for i in lst:
 #lst = list(map(lambda x:x.lower(), lst))
