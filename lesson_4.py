@@ -13,14 +13,15 @@ def most_common(lst):
     data = Counter(lst)
     return data.most_common(1)
 
-def rar_letter(lst):
-    d = Counter(lst)
-    v = d.most_common()[:-1-1:-1]
-    return v[0][0][0]
+def rar_letter(lst, n):
+    b = [i[0] for i in lst]
+    k = Counter(b)
+    #print(k)
+    return min(k, key=k.get)
 
 l = f(lst, n)
 print(l)
 print(most_common(l))
-print(rar_letter(l))
+print(rar_letter(l, n))
 
 
