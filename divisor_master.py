@@ -1,3 +1,4 @@
+from collections import Counter
 #1
 def prime_number(n):
     k = 0
@@ -39,7 +40,7 @@ def prime_multiplier(n):
        i = i + 1
    if n > 1:
        prim.append(n)
-   return prim
+   return Counter(prim)
 
 #5
 def max_divider(n):
