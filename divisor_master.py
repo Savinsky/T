@@ -31,16 +31,34 @@ def max_prime_divider(n):
 
 #4
 def prime_multiplier(n):
-   i = 2
-   prim = []
-   while i * i <= n:
-       while n % i == 0:
-           prim.append(i)
-           n = n / i
-       i = i + 1
-   if n > 1:
-       prim.append(n)
-   return Counter(prim)
+    dict_degree = {
+        0: "\u2070",
+        1: "",
+        2: "\u00B2",
+        3: "\u00B3",
+        4: "\u2074",
+        5: "\u2075",
+        6: "\u2076",
+        7: "\u2077",
+        8: "\u2078",
+        9: "\u2079",
+        10: "\u00B9" + "\u2070",
+        11: "\u00B9" + "\u00B9"
+    }
+    i = 2
+    prim = []
+    while i * i <= n:
+        while n % i == 0:
+            prim.append(i)
+            n = n / i
+        i = i + 1
+    if n > 1:
+        prim.append(n)
+    prim = Counter(prim)
+    res = {key: dict_degree.get(key, prim[key]) for key in prim}
+    #for key, value in res.iteritems():
+    #    print(res.get(key,value))
+    return res
 
 #5
 def max_divider(n):
