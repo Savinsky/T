@@ -12,7 +12,7 @@ def prime_number(n):
 
 #2
 def number_divisors(n):
-    numb_div = [d for d in range(1, n // 2 + 1) if n % d == 0] + [n]
+    numb_div = [d for d in range(1, n // 2 + 1) if n % d == 0] 
     return numb_div
 
 #3
@@ -56,9 +56,8 @@ def prime_multiplier(n):
         prim.append(n)
     prim = Counter(prim)
     res = {key: dict_degree.get(key, prim[key]) for key in prim}
-    #for key, value in res.iteritems():
-    #    print(res.get(key,value))
-    return res
+    for key, value in res.items():
+        print key,value
 
 #5
 def max_divider(n):
