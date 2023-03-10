@@ -30,6 +30,10 @@ class Deck(object):
     def draw_card(self):
         return self.cards.pop()
 
+    def choose_trump_suit(self):
+        trump_suit = random.choice(SUITS)
+        return trump_suit
+
 
 class Player(object):
     def __init__(self, name):
@@ -42,17 +46,19 @@ class Player(object):
     def show_hand(self):
         return [card.show() for card in self.hand]
 
-deck = Deck()
-deck.shuffle()
-#deck.show()
-n = Player("Nik")
-print ("Карты в руках "), n.name
-n.draw(deck)
-n.show_hand()
+if __name__ == '__main__':
+    deck = Deck()
+    deck.shuffle()
+    trump_suit = deck.choose_trump_suit()
+    print ("Козырная масть "), trump_suit
+    n = Player("Nik")
+    print ("Карты в руках "), n.name
+    n.draw(deck)
+    n.show_hand()
 
-bot = Player("Bot")
-print ("Карты в руках "), bot.name
-bot.draw(deck)
-bot.show_hand()
+    bot = Player("Bot")
+    print ("Карты в руках "), bot.name
+    bot.draw(deck)
+    bot.show_hand()
 
 
