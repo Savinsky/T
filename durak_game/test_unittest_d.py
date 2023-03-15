@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# coverage
 import unittest
 from collections import Counter
 from ndrk import Deck, Player
@@ -21,6 +22,7 @@ class TestClassDeckUnittest(unittest.TestCase):
 
     def tearDown(self):
         print('Test completed!')
+        del self.deck
 
 class TestClassPlayerUnittest(unittest.TestCase):
     def setUp(self):
@@ -38,4 +40,5 @@ class TestClassPlayerUnittest(unittest.TestCase):
 
     def tearDown(self):
         print('Test completed!')
+        del self.player
 

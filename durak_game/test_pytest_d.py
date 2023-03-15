@@ -19,6 +19,10 @@ class TestClassDeckPytest:
     def test_shuffle_deck(self):
         assert self.deck.shuffle() != self.deck
 
+    def teardown(self):
+        print('Test completed!')
+        del self.deck
+
 class TestClassPlayerPytest:
     def setup(self):
         self.player = Player("Nik")
@@ -31,6 +35,11 @@ class TestClassPlayerPytest:
 # Проверяем есть ли 6 карт в руках игрока
     def test_draw_card(self):
         assert len(self.player.draw(Deck())) == 6
+
+    def tearown(self):
+        print('Test completed!')
+        del self.player
+
 
 
 
