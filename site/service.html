@@ -117,9 +117,28 @@
 <main class="container">
   <div class="bg-body-tertiary p-5 rounded">
     <h1>Форма запроса к API</h1>
+    <br>
+
+    <form class="row g-3">
+    <div class="col-md-3">
+    <label for="validationDefault01" class="form-label">Название вакансии:</label>
+    <input type="text" class="form-control" id="validationDefault01" required>
+  </div>
+      <br>
+  <div class="col-md-3">
+    <label for="validationDefault03" class="form-label">Город:</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div>
+      <br>
+  <div class="col-12">
+    <button class="btn btn-outline-success" type="submit">Найти</button>
+  </div>
+</form>
+    <br>
+
     <p class="lead">
-      На этой страницевы можете воспользоваться формой запроса по поиску вакансий. Для этого вам необходимозаполнить несколько полей:<br>
-      - Ключевые слова: укажите ключевые слова, связанные с работой, которуювы ищите.<br>
+      На этой странице вы можете воспользоваться формой запроса по поиску вакансий. Для этого вам необходимо заполнить несколько полей:<br>
+      - Ключевые слова: укажите ключевые слова, связанные с работой, которую вы ищите.<br>
       - Регион: выберите регион, в котором вы ищите работу.<br>
       После заполнения всех полей нажмите кнопку "Найти вакансии". Наш сервис покажет вам список подходящих вакансий, соответсвующим вашим критериям поиска.
       Если у вас возникнут какие-либо вопросы или проблемы при использовании формы запроса по поиску вакансий, пожалуйста,
@@ -127,6 +146,7 @@
 
     </p>
   </div>
+
 </main>
     </body>
 </html>
