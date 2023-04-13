@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-import telebot
+import telebot, requests
 from telebot import types
 
 TOKEN = ''
+T2 = '' #Бот которому отправляем заказ
 bot = telebot.TeleBot(TOKEN)
+chat_id = '5282256617L'
 
 @bot.message_handler(commands = ['start'])
 def start(message):
@@ -41,9 +43,7 @@ def askname(message):
     try:
         #markup = types.ReplyKeyboardRemove(selective=False)
         bot.send_message(message.chat.id, "<b>ФИО заказчика\nIvanov Ivan Ivanovich</b>", parse_mode='html')
-        #user_info['username'] = message.text
         bot.register_next_step_handler(message, askgeo)
-        #markup = types.ReplyKeyboardHide()#selective=False)
 
     except Exception as e:
         bot.reply_to(message, 'Что-то пошло не так...')
@@ -83,6 +83,9 @@ def checkorder(message):
     try:
         bot.send_message(message.chat.id, "<b>Заказ принят в обработку. Мы перезвоним Вам для уточнения заказа. "
                                           "Списибо.</b>", parse_mode='html')
+        url = "https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}".format(T2, chat_id, message)
+        print(requests.get(url).json())
+
     except Exception as e:
         bot.reply_to(message, 'Что-то пошло не так...')
 
