@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Поиск работы</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
@@ -107,8 +108,10 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="search">
+        <input class="form-control me-2" type="search" id="livebox" placeholder="Поиск" aria-label="search">
+        <p id = "datalist"></p>
         <button class="btn btn-outline-success" type="submit">Поиск</button>
+
       </form>
     </div>
   </div>
@@ -116,34 +119,77 @@
 
 <main class="container">
   <div class="bg-body-tertiary p-5 rounded">
-    <h1>Поиск вакансий по названию и городу</h1>
+    <h1>Поиск вакансий</h1>
     <br>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 
     <form action='' method="POST">
       <div class="col-md-3">
         <label for="validationDefault01" class="form-label">Название вакансии:</label>
-        <input type="text"  name="vacancy" class="form-control" id="validationDefault01" required>
+        <input type="text"  name="vacancy" class="form-control" id="validationDefault01"  required>
       </div>
       <br>
       <div class="col-md-3">
         <label for="validationDefault03" class="form-label">Город:</label>
-        <input type="text" name="city" class="form-control" id="validationDefault03" required>
+        <input type="text" name="city" class="form-control" id="validationDefault03">
       </div>
       <br>
       <div class="col-12">
-        <button class="btn btn-outline-success" type="submit">Найти</button>
+        <button class="btn btn-outline-success" type="submit" name="write" value="Write">Записать в БД</button>
       </div>
     </form>
     <br>
+    <form action='' method="POST">
+    <div class="col-md-3">
+        <label class="form-label">Выборка из БД по городу:</label>
+        <input type="text" name="search" class="form-control"  required>
+    </div>
+    <br>
+    <div class="col-12">
+       <button class="btn btn-outline-success" type="submit" name="search" value="Search">Найти в БД</button>
+    </div>
+    </form>
+    <br>
+    <form action='' method="POST">
+      <div class="col-12">
+        <button class="btn btn-outline-success" type="submit" name="watch" value="Watch">Вывести все из БД</button>
+      </div>
+    </form>
+    <br>
+    Ввод новых вакансий в свою БД вручную.
+    <br>
 
-    <p class="lead">
-      Найдено вакансий на hh.ru с указанным уровнем дохода в рублях по запросу {{data['vacancy']}} в городе {{data['city']}}
+    <form action='' method="POST">
+      <div class="col-md-3">
+        <label class="form-label">Название вакансии:</label>
+        <input type="text"  name="vacancy" class="form-control" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Город:</label>
+        <input type="text" name="city" class="form-control" required>
+      </div>
+        <div class="col-md-3">
+        <label class="form-label">Зарплата:</label>
+        <input type="text"  name="salary" class="form-control" required>
+        </div>
+        <div class="col-md-3">
+        <label  class="form-label">Скиллы:</label>
+        <input type="text"  name="skills" class="form-control" required>
+        </div>
       <br>
-      Со средней заплатой от и до {{data['salary']}} руб
-      <br>
-      Самые часто встречаемые навыки и количество {{data['skills']}}
-      <br>
-      <br>
+
+      <div class="col-12">
+        <button class="btn btn-outline-success" type="submit" name="writenew" value="Writenew">Записать в БД</button>
+      </div>
+    </form>
       <br>
       На этой странице вы можете воспользоваться формой запроса по поиску вакансий. Для этого вам необходимо заполнить несколько полей:<br>
       - Название вакансии: укажите ключевые слова, связанные с названием вакансии, которую вы ищите.<br>

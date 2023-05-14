@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
-
+from repoze.lru import lru_cache
+@lru_cache(maxsize=100)
 class HeadHunterInteraction:
     def __init__(self):
         self.URL = 'https://api.hh.ru'
@@ -83,7 +84,7 @@ class HeadHunterInteraction:
 
         skills = list(my_dict.items())
         skills.sort(key=lambda x: x[1], reverse=True)
-        return skills[:15]
+        return str(skills[:5])
 
     def get_salary(self, vacancy, id_city):
         params = {'text': '{}'.format(vacancy), 'area': '{}'.format(id_city), 'period': '30', 'only_with_salary': 'true', 'per_page': '100'}
@@ -101,5 +102,6 @@ class HeadHunterInteraction:
         #quantity = response['found']
         avarage_salar_from = sum(salar_from) / len(salar_from)
         avarage_salar_to = sum(salar_to) / len(salar_to)
+        avarage_salar = (avarage_salar_from + avarage_salar_to)/2
 
-        return avarage_salar_from, avarage_salar_to
+        return avarage_salar
